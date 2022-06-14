@@ -1,0 +1,42 @@
+Name: Vinayan Kurup
+
+Included Files:
+	-grid.h/grid.cpp
+	-player.h/player.cpp
+	-battledotnet.h/battledotnet.cpp
+	-main.cpp
+	-Makefile
+	-README
+
+Running Instructions:
+	1. Download and unzip the battledot file
+	2. In the terminal navigate to the ~/battledot director and type make
+	3. Execute the compiled program via ./battlenetdot <positive integer value >= 2>
+	4. Once running is completed, type command make clean to clear object and executable files
+
+Makefile targets:
+	1. make: Builds the executable battledotnet file. Included are the battledotnet.h, player.h, grid.h, and main.cpp
+	2. make clean: Removes all object and executable files
+
+Notes:
+	\This program is designed for usage on Linux. Implementation 
+	\was done via creating a thread for each player in the game.
+	\Ensure g++ is installed on your Linux device.
+	\This program contained the following classes:
+
+		-Grid class: the battledot grid object. Creates a 10x10 in which dots are used to
+		represent open space. This class uses truly random number generator method to place a ship
+		on the grid. 
+
+		-Player class: associates a board, ID and target to each player object. The associated attributes
+		outline the actions the player class can take.
+
+		-BattleDot class: brings together all the players in the game. Executes all the actions of the players
+		once per round. It ensures every player gets a turn in once per round before the next round of actions can 
+		begin. In this game, players attack unidirectionally. They are linked in a circle, and can only attack 
+		the next person in the same direction of the circle once they've eliminated their current opponent. Once a player 			has eliminated all the others, they are declared the winner.
+
+			-to slow down the out stream, increase the integer value in this_thread::sleep_for on line 63. This value 				is in milliseconds.
+
+	\This program does not require any further input once started. Once executed, the program will output the moves of every
+	player to console, output the players who are eliminated, and at the end it will signal the winner all by their ID
